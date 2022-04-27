@@ -38,6 +38,8 @@ async function run() {
         const serviceCollection = client.db("geniusCar").collection("service");
         const orderCollection = client.db("geniusCar").collection("order");
 
+        console.log("All route shode be work");
+
         //AUTH
         app.post('/login', async (req, res) => {
             const user = req.body;
@@ -52,6 +54,7 @@ async function run() {
             const services = await cursor.toArray();
             res.send(services);
         })
+
 
         // Show single service
         app.get('/service/:id', async (req, res) => {
@@ -110,6 +113,9 @@ run().catch(console.dir);
 
 app.get('/', (req, res) => {
     res.send("Running Genius Server");
+});
+app.get('/', (req, res) => {
+    res.send("Running Car Server");
 });
 
 app.listen(port, () => {
